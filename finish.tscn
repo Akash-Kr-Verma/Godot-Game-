@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://dsqx2ysfeyx3v"]
+
+[ext_resource type="Texture2D" uid="uid://gx1xihdbejvu" path="res://assets/sprites/fruit.png" id="1_iwv0s"]
+[ext_resource type="Script" path="res://finish.gd" id="1_nmkxk"]
+[ext_resource type="PackedScene" uid="uid://2nb0ca6ero4s" path="res://scenes/level2.tscn" id="2_ilhkk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lyfjh"]
+custom_solver_bias = 0.243
+
+[node name="Finish" type="Area2D"]
+disable_mode = 2
+script = ExtResource("1_nmkxk")
+target_level = ExtResource("2_ilhkk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(513, -140)
+scale = Vector2(1.61765, 1.5)
+texture = ExtResource("1_iwv0s")
+region_enabled = true
+region_rect = Rect2(1, 33, 14, 15)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(513, -138)
+shape = SubResource("CircleShape2D_lyfjh")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
